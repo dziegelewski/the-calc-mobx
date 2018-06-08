@@ -39,8 +39,9 @@ class Keyboard extends Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener('keydown', ({ key }) => {
-			this.onInput(translatdeKey(key));
+		window.addEventListener('keydown', e => {
+			e.key === 'Backspace' && e.preventDefault();
+			this.onInput(translatdeKey(e.key));
 		})
 	}
 }

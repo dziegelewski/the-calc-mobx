@@ -17,7 +17,7 @@ export function isNumber(n) {
 }
 
 export function isMathSymbol(n) {
-	return (/^(\-|\+|\*|\/)$/).test(n.toString());
+	return (/^(-|\+|\*|\/)$/).test(n.toString());
 }
 
 export function concatNumbers(...digits) {

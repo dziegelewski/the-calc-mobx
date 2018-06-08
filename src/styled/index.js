@@ -2,14 +2,16 @@ import styled from 'styled-components';
 import { flexCenter  } from './cssUtils';
 
 const background = '#CCC';
-const color1 = '#000';
-const color2 = '#FFF';
-
-
+const border = '#BBB';
+const light = '#FFF';
+const dark = '#000';
 
 export const global = `
 	body {
-		background ${background}; 
+		background ${background};
+	  margin: 0;
+	  padding: 0;
+	  font-family: sans-serif;
 	}
 
 	* {
@@ -21,19 +23,20 @@ export const CalcBox = styled.div`
 	width: 300px;
 	margin: 10px auto;
 	font-size: 30px;
-	background: ${color2}
+	background: ${light};
+	border: 1px solid ${border};
 `;
 
 export const CalcScreen = styled.div`
 	width: 100%;
 	height: 60px;
-	background: ${color1};
-	color: ${color2};
+	background: ${dark};
+	color: ${light};
 	text-align: right;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	border: 5px solid ${color1};
+	border: 5px solid ${dark};
 	padding: 10px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -50,25 +53,28 @@ export const CalcKeyboard = styled.div`
 `
 
 export const CalcKey = styled.button`
-	border: 2px solid ${color1};
+	border: 2px solid ${border};
 	${flexCenter};
 	font-size: 30px;
 	cursor: pointer;
+
+	transition: background .1s, color .1s;
+
+	&:hover {
+		background: white;
+	}
+
 	${props => props.important ? importantKey() : ''}
 	${props => props.keyName === 'Enter' ? enterKey() : ''}
 `
 
 function importantKey() {
 	return `
-		background: ${color1};
-		color: ${color2};
-		border-color: ${color2};
+		background: ${dark};
+		color: ${light};
 
 		&:hover {
-			background: ${color2};
-			color: ${color1};
-			border-color: ${color1};
-
+			color: ${dark};
 		}
 	`
 }
